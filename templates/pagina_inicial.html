@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../static/css/home.css" rel="stylesheet" />
+    <link rel="shortcut icon" type="image-x/png" href="../static/image/icon.ico">
+  </head>
+  <body>
+
+    {% extends 'base.html' %}
+
+    {% block title %}Pega Visão{% endblock %}
+
+    {% block content %}
+    <section class="adicionarbtn">
+      {% if user_function == 'admin' %}
+      <button>Pegou a visão? Avalie agora o filme! <img src="../static/image/pipoca.png" alt=""></button>
+      {% endif %} 
+    </section>
+
+    <section class="filmes-container">
+      <div class="filmes-titulo">
+        <div>
+          <img
+          style="margin-right: 15px"
+          src="../static/image/filmes.png"
+          alt="filmes"
+          />
+          <h1>Filmes</h1>
+        </div>
+        <a href="{{ url_for('filmes') }}">Ver mais</a>
+        
+      </div>
+      <div class="filmes-section">
+          <div class="filmes-box-container">
+              {% for filme_serie in fimes_recentes %}
+              {% if filme_serie[1] == 'Filme' %}
+              <div class="filmes-box">
+                  <div class="filmes-img">
+                      <img src="data:image/jpeg;base64,{{ filme_serie[7] }}" alt="Capa do Filme">
+                  </div>
+                  <div class="filmes-txt">{{ filme_serie[2] }}</div>
+                  <div class="filmes-data">{{ filme_serie[3] }}</div>
+                  <div class="filmes-infos">  
+                    <div class="files-txt-titulo">{{ filme_serie[2] }}</div>  
+                    <div class="filmes-diaassistido">Visualização: {{ filme_serie[4] }}</div>               
+                      <div class="filmes-nota">
+                          {% if str_to_float(filme_serie[5]) < 5.5 %}
+                          <div>
+                            <p>Nota:</p>
+                            <img src="../static/image/notabaixa.png" alt="Avaliação Baixa">
+                            <span>{{ filme_serie[5] }}</span>
+                          </div>                      
+                          {% else %}
+                          <div>
+                            <p>Nota:</p>
+                            <img src="../static/image/notaboa.png" alt="Avaliação Alta">
+                            <span>{{ filme_serie[5] }}</span>
+                          </div>                     
+                          {% endif %}                   
+                      </div>
+                    <div class="filmes-opniao">Avaliação: {{ filme_serie[6] }}</div>
+                    <div class="filmes-ver">
+                      <a href="{{ url_for('detalhes', filme_id=filme_serie[0]) }}">Ver mais</a>
+                    </div>                
+                    {% if user_function == 'admin' %}
+                    <div class="filmes-excluir">
+                      <form action="{{ url_for('remover_filme', filme_id=filme_serie[0]) }}" method="post">
+                          <button type="submit" >Excluir {{ filme_serie[1] }} <img src="../static/image/remover.png" alt="remover"></button>
+                      </form>
+                    </div>
+                    {% endif %}
+                  </div>         
+              </div>
+              {% endif %}
+              {% endfor %}
+          </div>
+      </div>   
+    </section>
+
+    <section style="padding-top: 15px;" class="series-container">
+      <div class="series-titulo">
+        <div>
+          <img
+          style="margin-right: 15px"
+          src="../static/image/series.png"
+          alt="filmes"
+          />
+          <h1>Series</h1>
+        </div>
+        <a href="{{ url_for('series') }}">Ver mais</a>
+      </div>
+      <div class="series-section">
+          <div class="filmes-box-container">
+            {% for filme_serie in series_recentes %}
+            {% if filme_serie[1] == 'Serie' %}
+            <div class="filmes-box">
+                <div class="filmes-img">
+                    <img src="data:image/jpeg;base64,{{ filme_serie[7] }}" alt="Capa do Filme">
+                </div>
+                <div class="filmes-txt">{{ filme_serie[2] }}</div>
+                <div class="filmes-data">{{ filme_serie[3] }}</div>
+                <div class="filmes-infos">  
+                  <div class="files-txt-titulo">{{ filme_serie[2] }}</div>  
+                  <div class="filmes-diaassistido">Visualização: {{ filme_serie[4] }}</div>               
+                    <div class="filmes-nota">
+                        {% if str_to_float(filme_serie[5]) < 5.5 %}
+                        <div>
+                          <p>Nota:</p>
+                          <img src="../static/image/notabaixa.png" alt="Avaliação Baixa">
+                          <span>{{ filme_serie[5] }}</span>
+                        </div>                      
+                        {% else %}
+                        <div>
+                          <p>Nota:</p>
+                          <img src="../static/image/notaboa.png" alt="Avaliação Alta">
+                          <span>{{ filme_serie[5] }}</span>
+                        </div>                     
+                        {% endif %}                   
+                    </div>
+                  <div class="filmes-opniao">Avaliação: {{ filme_serie[6] }}</div>
+                  <div class="filmes-ver">
+                    <a href="{{ url_for('detalhes', filme_id=filme_serie[0]) }}">Ver mais</a>
+                  </div>                
+                  {% if user_function == 'admin' %}
+                  <div class="filmes-excluir">
+                    <form action="{{ url_for('remover_filme', filme_id=filme_serie[0]) }}" method="post">
+                        <button type="submit" >Excluir {{ filme_serie[1] }} <img src="../static/image/remover.png" alt="remover"></button>
+                    </form>
+                  </div>
+                  {% endif %}
+                </div>         
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <div class="adicionarfilmeseries-container">  
+      <div class="adicionarfilmeseries">
+        {% if user_function == 'admin' %}
+            <h1>Adicionar Filme ou Série</h1>
+            <form action="{{ url_for('home') }}" method="post" enctype="multipart/form-data">
+                <input placeholder="Digite o titulo" type="text" id="titulo" name="titulo" required><br>
+                <div class="form-group">
+                    <select class="form-control" id="tipo" name="tipo" required>
+                        <option value="" disabled selected>Selecionar categoria</option>
+                        {% for tipo in tipos %}
+                            <option value="{{ tipo }}">{{ tipo }}</option>
+                        {% endfor %}
+                    </select>
+                </div><br>
+                <div class="adicionarfilmeseries-datas">
+                  <input placeholder="Digite o ano de lançamento " type="text" id="ano" name="ano" required>
+                  <input placeholder="Digite a data assistida" type="text" id="dia_assistido" name="dia_assistido" required>
+                </div>
+                <br>
+                <div class="adicionarfilmeseries-datas">
+                  <input placeholder="Nota de 0 a 10" type="text" id="avaliacao" name="avaliacao" pattern="[0-9]+([,\.][0-9]+)?" title="Informe um número válido" required>
+                  <div class="file-upload-container">
+                      <label style="cursor: pointer;" for="capa" class="file-upload-button">Selecionar capa</label>
+                      <input style="cursor: pointer;" type="file" id="capa" name="capa" accept="image/*" class="file-input" required>
+                      <span style="color: white;" class="file-name">Selecionar aquivo</span>
+                  </div>
+                </div><br>
+                
+                <textarea placeholder="O que você achou?" id="opiniao" name="opiniao" rows="4" cols="50" required></textarea><br>
+                
+              
+                <input type="submit" value="Adicionar">
+            </form>
+        {% endif %}
+
+      </div>
+
+    </div>
+    {% endblock %}
+
+  </body>
+  <script src="../static/js/paginainicial.js"></script>
+</html>

@@ -1,0 +1,1108 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Righteous&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Signika+Negative:wght@300;400;500&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+li {
+  list-style: none;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  font-family: "Open Sans", sans-serif;
+  background-color: #1a191f;
+}
+/* Para navegadores WebKit (Chrome, Safari) */
+::-webkit-scrollbar {
+  width: 6px; /* Largura da barra de rolagem */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #cf1414; /* Cor da thumb (a "alça" da barra de rolagem) */
+  border-radius: 6px; /* Bordas arredondadas da thumb */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #1a191f; /* Cor do track (a área de fundo da barra de rolagem) */
+  scrollbar-color: #cf1414 #f8f9fc;
+}
+header {
+  width: 100%;
+  height: 12vh;
+  max-height: 60px;
+  padding: 0 2%;
+  background-color: #1a191fc9;
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  z-index: 998;
+  color: white;
+}
+header nav {
+  height: 80%;
+  display: flex;
+  align-items: center;
+}
+.navegacao-logo,
+.navegacao-mobile {
+  height: 100%;
+}
+.navegacao-logo a img,
+.navegacao-mobile a img {
+  height: 100%;
+}
+header .header-button {
+  display: flex;
+  align-items: center;
+}
+header .header-button button,
+header nav button,
+.btnsair {
+  background-color: transparent;
+  border: 0;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+}
+header .pesquisar-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  display: none;
+}
+header .pesquisar-box form {
+  width: 95%;
+  display: flex;
+}
+header .pesquisar-box .enviar-btn {
+  width: auto;
+  height: 35px;
+  cursor: pointer;
+  background-color: transparent;
+  border: 0;
+}
+.mensagem {
+  font-size: 13px;
+  text-align: center;
+}
+.input-password{
+  position: relative;
+  width: 100%;
+}
+.input-password input[type="text"]{
+  width: 100%;
+  padding-left: 8px;
+}
+.ver-ocultar-senha{
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(-50%, -50%);
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+}
+header .pesquisar-box .pesquisar-btn {
+  width: 97%;
+  height: 35px;
+  border-radius: 4px;
+  padding-left: 10px;
+  font-size: 14px;
+  outline: none;
+  border: 0;
+  background-color: #5e6a6d8a;
+  color: white;
+}
+header .pesquisar-box input::placeholder {
+  color: #b2aeaa;
+}
+.menu-right {
+  display: flex;
+  align-items: center;
+}
+.alterarbtn {
+  display: flex;
+  align-items: center;
+}
+.alterarbtn p {
+  font-size: 14px;
+  margin-right: 5px;
+}
+/*mobile*/
+.menubtn {
+  display: none;
+}
+.mobile {
+  display: none;
+}
+/*sessão de filmes*/
+.adicionarbtn {
+  padding-top: 12vh;
+  padding-bottom: 2vh;
+  width: 100%;
+  height: auto;
+  background-color: #1a191f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.adicionarbtn button {
+  background-color: #cf1414;
+  color: white;
+  padding: 8px 20px;
+  cursor: pointer;
+  border: 0;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: 300ms;
+  display: flex;
+  align-items: center;
+  font-family: "Signika Negative", sans-serif;
+}
+.adicionarbtn button:hover {
+  background-color: #cf141480;
+}
+.adicionarbtn button img {
+  margin-left: 10px;
+}
+.filmes-container {
+  padding-left: 2%;
+  padding-right: 2%;
+  width: 100%;
+  height: auto;
+  background-color: #1a191f;
+  color: white;
+}
+.filmes-titulo div,
+.series-titulo div {
+  display: flex;
+  align-items: center;
+}
+.filmes-titulo,
+.series-titulo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+.filmes-titulo a,
+.series-titulo a {
+  color: white;
+  font-size: 13px;
+}
+.filmes-titulo h1,
+.series-titulo h1,
+.todosfilmes-container h1,
+.comentarios-container-titulo h1,
+h1 {
+  font-size: 18px;
+  font-family: "Signika Negative", sans-serif;
+  color: white;
+}
+.filmes-section,
+.series-container {
+  padding-bottom: 2%;
+}
+.filmes-box-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  max-width: 1366px;
+  margin: 0 auto;
+  height: auto;
+}
+.filmes-box {
+  margin: 1%;
+  width: 190px;
+  height: 280px;
+  position: relative;
+  transition: 350ms;
+}
+.filmes-img {
+  width: 100%;
+  height: 90%;
+}
+.filmes-img img {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  width: 100%;
+  height: 100%;
+}
+.filmes-txt {
+  width: 100%;
+  height: auto;
+  background-color: #cf1414;
+  font-size: 13px;
+  text-align: center;
+  padding: 2%;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-transform: capitalize;
+}
+.filmes-data {
+  position: absolute;
+  top: 5%;
+  left: 3%;
+  background-color: #5e6a6de0;
+  padding: 3px 8px;
+  font-size: 13px;
+  border-radius: 10px;
+}
+.filmes-vermais {
+  position: absolute;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  transition: 650ms;
+  opacity: 0;
+}
+.filmes-box:hover .filmes-vermais {
+  opacity: 1;
+}
+.filmes-infos {
+  position: absolute;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.747);
+  backdrop-filter: blur(3px);
+  width: 100%;
+  height: 100%;
+  padding: 4%;
+  opacity: 0;
+  transition: 350ms;
+  border-radius: 5px;
+  border: 1px solid #cf1414;
+}
+.filmes-box:hover {
+  transform: scale(1.02);
+}
+.filmes-box:hover .filmes-infos {
+  opacity: 1;
+}
+.files-txt-titulo {
+  font-size: 14px;
+  margin-bottom: 8px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+.filmes-diaassistido {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+.filmes-nota div {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+.filmes-nota div img {
+  margin: 0 10px;
+}
+.filmes-nota div span {
+  font-size: 17px;
+  font-weight: bold;
+  color: #f8d440;
+}
+.filmes-opniao {
+  width: 100%;
+  height: auto;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 13px;
+  margin-top: 5px;
+  padding: 5px 0;
+}
+.filmes-ver {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+.filmes-infos a {
+  text-decoration: none;
+  color: black;
+  background-color: #f8d440;
+  padding: 5px 20px;
+  border-radius: 5px;
+  text-transform: capitalize;
+  transition: ease-in 250ms;
+  font-size: 14px;
+  font-weight: bold;
+}
+.filmes-infos a:hover {
+  padding: 5px 40px;
+}
+.filmes-excluir {
+  width: 100%;
+  position: absolute;
+  bottom: 2%;
+  left: 0;
+  display: flex;
+  justify-content: center;
+}
+.filmes-excluir button {
+  display: flex;
+  align-items: center;
+  color: white;
+  padding: 5px 12px;
+  background-color: #cf1414;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 0;
+}
+.filmes-excluir button img {
+  margin-left: 5px;
+}
+.filmes-excluir button:hover {
+  background-color: #cf141471;
+}
+/*Sessão de series*/
+.series-container {
+  width: 100%;
+  min-height: 60vh;
+  background-color: #1a191f;
+  color: white;
+  padding: 0 2%;
+}
+/*login*/
+.login,
+.alterar-senha {
+  width: 80%;
+  height: auto;
+  max-width: 400px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2%;
+  background-image: url(../image/login.webp);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 1px solid #cf1414;
+  border-radius: 8px;
+  -webkit-box-shadow: 6px 6px 15px -6px rgba(0, 0, 0, 0.71);
+  box-shadow: 6px 6px 15px -6px rgba(0, 0, 0, 0.71);
+  color: white;
+  display: none;
+  z-index: 999;
+}
+.login-container {
+  padding: 2% 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.login-container h1 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  font-family: "Signika Negative", sans-serif;
+}
+.login-container form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.login input,
+.login button {
+  width: 100%;
+  height: 40px;
+  padding-left: 8px;
+  font-size: 15px;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid #cf1414;
+}
+.login button {
+  cursor: pointer;
+  background-color: #cf1414;
+  color: white;
+  font-size: 16px;
+  transition: 350ms;
+}
+.login button:hover {
+  background-color: #cf14147c;
+}
+.login-container div {
+  text-align: center;
+  color: white;
+  margin-top: 10px;
+}
+.login a,
+.login span {
+  font-size: 14px;
+  text-align: center;
+  color: white;
+}
+/*redefinir*/
+.redefinir {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url(../image/criarconta.webp);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.redefinir .logoimg img{
+  width: 90%;
+  max-width: 300px;
+}
+.redefinir-box {
+  width: 95%;
+  height: auto;
+  max-width: 400px;
+  padding: 2%;
+  border-radius: 8px;
+  border: 1px solid gray;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.74
+  ); /* Cor de fundo com transparência para o efeito de vidro */
+  backdrop-filter: blur(5px); /* Aplica o efeito de desfoque */
+  -webkit-box-shadow: 6px 6px 15px -6px rgba(0, 0, 0, 0.71);
+  box-shadow: 6px 6px 15px -6px rgba(0, 0, 0, 0.71);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.redefinir-box h1 {
+  font-size: 24px;
+  color: black;
+}
+.redefinir-box input {
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+  border: 0;
+  font-size: 15px;
+}
+
+.redefinir-box label{
+  font-size: 15px;
+}
+.input-password input{
+  padding-left: 8px;
+  outline: none;
+  margin-top: 5px;
+}
+.redefinir-box input[type="email"] {
+  padding-left: 8px;
+  margin-bottom: 15px;
+  margin-top: 5px;
+  outline: none;
+}
+.redefinir-box input[type="submit"] {
+  background-color: #cf1414;
+  color: white;
+  cursor: pointer;
+  transition: 350ms;
+}
+.redefinir-box input[type="submit"]:hover {
+  background-color: rgb(141, 14, 14);
+}
+/*alterar senha*/
+.alterar-senha {
+  color: black;
+  border: 1px solid gray;
+  background-image: none;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.74
+  ); /* Cor de fundo com transparência para o efeito de vidro */
+  backdrop-filter: blur(3px); /* Aplica o efeito de desfoque */
+  border-radius: 8px;
+  -webkit-box-shadow: 6px 6px 15px -6px rgba(0, 0, 0, 0.71);
+  box-shadow: 6px 6px 15px -6px rgba(0, 0, 0, 0.71);
+  flex-direction: column;
+  border: 1px solid gray;
+  z-index: 999;
+}
+.alterar-senha-container h1 {
+  color: black;
+  margin-bottom: 10px;
+  font-size: 21px;
+}
+.alterar-senha-container form {
+  display: block;
+}
+.alterar-senha-container form label {
+  font-size: 14px;
+}
+.alterar-senha-container form input {
+  width: 100%;
+  height: 38px;
+  border-radius: 5px;
+  outline: none;
+  border: 0;
+  padding-left: 8px;
+  font-size: 15px;
+}
+.alterar-senha-container form input[type="submit"] {
+  padding-left: 0;
+  background-color: #cf1414;
+  cursor: pointer;
+  color: white;
+  transition: 350ms;
+}
+.alterar-senha-container form input[type="submit"]:hover {
+  background-color: #a01111;
+}
+/*Cadastrar*/
+.criarconta-container {
+  background-image: url(../image/criarconta.webp);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  color: black;
+  display: flex;
+  align-items: center;
+}
+.criarconta-container-box {
+  width: 95%;
+  max-width: 450px;
+  height: auto;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 8px;
+}
+.criarconta-logo {
+  width: 60%;
+  text-align: center;
+  margin-bottom: 30px;
+}
+.criarconta-logo img {
+  width: 100%;
+  height: 100%;
+}
+.criarconta {
+  padding: 3% 2%;
+  width: 100%;
+  height: auto;
+  border: 1px solid gray;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.74
+  ); /* Cor de fundo com transparência para o efeito de vidro */
+  backdrop-filter: blur(5px); /* Aplica o efeito de desfoque */
+  border-radius: 8px;
+  -webkit-box-shadow: 6px 6px 15px -6px rgba(0, 0, 0, 0.71);
+  box-shadow: 6px 6px 15px -6px rgba(0, 0, 0, 0.71);
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+}
+.criarconta h1 {
+  font-size: 24px;
+  font-family: "Signika Negative", sans-serif;
+  font-weight: bold;
+}
+.criarconta input,
+.criarconta select {
+  width: 100%;
+  height: 38px;
+  outline: none;
+  border-radius: 5px;
+  border: 0;
+  font-size: 15px;
+  padding-left: 8px;
+}
+.criarconta form{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.criarconta form div{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.criarconta form label {
+  font-size: 14px;
+}
+.criarconta input[type="submit"] {
+  padding-left: 0;
+  background-color: #cf1414;
+  color: white;
+}
+.criarconta input[type="submit"]:hover {
+  background-color: rgb(151, 16, 16);
+}
+/*adicionar filmes e series*/
+.adicionarfilmeseries-container {
+  width: 90%;
+  max-width: 550px;
+  height: auto;
+  background-image: url(../image/adicionar.svg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 2%;
+  z-index: 999;
+  border: 1px solid #cf1414;
+  border-radius: 8px;
+  -webkit-box-shadow: 6px 6px 15px -6px rgba(0, 0, 0, 0.71);
+  box-shadow: 6px 6px 15px -6px rgba(0, 0, 0, 0.71);
+  display: none;
+}
+.adicionarfilmeseries form {
+  display: flex;
+  flex-direction: column;
+}
+.adicionarfilmeseries form input,
+.adicionarfilmeseries form select,
+textarea {
+  width: 100%;
+  height: 38px;
+  border-radius: 6px;
+  outline: none;
+  border: 0;
+  padding-left: 8px;
+  font-size: 15px;
+  border: 1px solid #cf1414;
+}
+.adicionarfilmeseries h1 {
+  font-size: 24px;
+  margin-bottom: 15px;
+  font-family: "Signika Negative", sans-serif;
+  color: white;
+}
+.adicionarfilmeseries-datas {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.adicionarfilmeseries-datas input[type="text"] {
+  width: 45%;
+}
+.adicionarfilmeseries-datas input[type="number"] {
+  width: 45%;
+}
+.adicionarfilmeseries input[type="submit"] {
+  padding-left: 0;
+  background-color: #cf1414;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+textarea {
+  resize: none;
+  padding: 8px;
+  height: auto;
+}
+.file-upload-container {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  width: 45%;
+  cursor: pointer;
+}
+.file-upload-button {
+  border: 2px solid #cf1414;
+  color: #cf1414;
+  background-color: #fff;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+  text-align: center;
+  width: 150px; /* largura do botão */
+}
+.file-input {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+.file-name {
+  margin-top: 10px;
+  font-size: 14px;
+  color: black;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-grow: 1; /* ocupar o espaço restante */
+  padding-left: 10px; /* espaçamento interno à esquerda */
+}
+/*detalhes-infos de filmes*/
+.infos-filmeseseries {
+  padding: 0 2%;
+  padding-top: 12vh;
+  width: 100%;
+  min-height: auto;
+  background-color: #1a191f;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+}
+.detalhe-capa {
+  display: flex;
+  padding: 2% 0;
+  justify-content: center;
+  width: 30%;
+  height: 50%;
+}
+.detalhe-infos {
+  padding: 2%;
+  width: 70%;
+  height: 100%;
+}
+.detalhe-capa img {
+  width: 100%;
+  max-width: 350px;
+  border-radius: 8px;
+}
+.detalhes-info-titulo {
+  font-size: 19px;
+  padding-bottom: 2%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.detalhes-info-titulo h1 {
+  font-family: "Signika Negative", sans-serif;
+  text-transform: capitalize;
+}
+.detalhe-infos-txt-p {
+  font-size: 16px;
+}
+.detalhe-infos-notas-boa-baixa {
+  display: flex;
+  align-items: center;
+}
+.detalhe-infos-notas-boa-baixa h1 {
+  font-size: 25px;
+  font-family: "Signika Negative", sans-serif;
+  color: #f8d440;
+}
+.detalhe-infos-voltar a {
+  border: 0;
+  text-decoration: none;
+  padding: 4px 10px;
+  border-radius: 5px;
+  background-color: #cf1414;
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+}
+.detalhe-infos-voltar a:hover {
+  background-color: #cf14148c;
+}
+.detalhe-infos-excluir form button {
+  background-color: #cf1414;
+  color: white;
+  padding: 8px 10px;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.detalhe-infos-excluir form button:hover {
+  background-color: #cf1414a1;
+}
+.comentarios-container-titulo {
+  margin-bottom: 2%;
+}
+.comentarios-section {
+  width: 100%;
+  height: auto;
+  border-top: 2px solid white;
+  padding-top: 2%;
+}
+.comentarios-container {
+  background-color: #1a191f;
+  color: white;
+  width: 100%;
+  height: auto;
+  padding: 2%;
+}
+.comentarios-box-comentar {
+  width: 100%;
+  display: flex;
+  gap: 10px;
+}
+.comentarios-box-comentar-nome {
+  width: 55px;
+  height: 55px;
+}
+.comentarios-box-comentar-nome p {
+  background-color: #f8d440;
+  color: #1a191f;
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  text-align: center;
+  line-height: 50px;
+  font-size: 25px;
+  font-weight: bold;
+  text-transform: capitalize;
+  font-family: "Signika Negative", sans-serif;
+}
+.comentarios-box-comentar form {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.comentarios-textarea {
+  width: 100%;
+  height: 100px;
+  border-radius: 8px;
+}
+.comentarios-box-comentar input {
+  height: 100%;
+  padding: 0 15px;
+  border-radius: 8px;
+  background-color: #cf1414;
+  color: white;
+  cursor: pointer;
+  font-weight: bold;
+  transition: linear 300ms;
+  border: 1px solid #a01111;
+}
+.comentarios-box-comentar input:hover {
+  background-color: #cf14143d;
+}
+.comentarios-feitos-container {
+  padding-bottom: 2%;
+}
+.comentarios-h1 {
+  padding: 2% 0;
+}
+.comentarios-feitos-box ul {
+  border-radius: 8px;
+}
+.comentarios-feitos-box h2 {
+  font-size: 16px;
+  font-weight: normal;
+  text-transform: capitalize;
+  color: #f8d440;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+}
+.comentarios-feitos-box ul li {
+  padding-left: 10px;
+  font-size: 14px;
+}
+.comentarios-letra-excluir {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.comentarios-letra-excluir button {
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+}
+/*todos os filmes*/
+.todosfilmes-container {
+  padding: 2%;
+  background-color: #1a191f;
+  width: 100%;
+  height: auto;
+}
+.todosfilmes-container-box,
+.todosfilmes-container-box-maisavaliados {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  color: white;
+}
+.todosfilmes-container-box-maisavaliados {
+  display: none;
+}
+.ultima-linha {
+  margin-top: 20px; /* Espaçamento entre os itens da última linha */
+}
+.todosfilmes-container-titulo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.todosfilmes-container-selecionar {
+  display: flex;
+  align-items: center;
+}
+.todosfilmes-container-selecionar h1 {
+  font-size: 14px;
+  margin-right: 10px;
+  font-weight: normal;
+}
+/* Estilo para o seletor */
+.todosfilmes-container-selecionar select {
+  padding: 2px 8px;
+  font-size: 13px;
+  border: 1px solid #cf1414;
+  border-radius: 5px;
+  background-color: #1a191f;
+  color: white;
+  cursor: pointer;
+  outline: none;
+}
+
+/* Estilo para as opções do seletor */
+.todosfilmes-container-selecionar option {
+  background-color: #1a191f;
+  color: white;
+}
+.todosfilmes-container-selecionar option:hover {
+  background-color: #cf1414;
+}
+/*resultado da pesquisa*/
+.resultado-container {
+  background-color: red;
+  padding-top: 12vh;
+  background-color: #1a191f;
+  min-height: 100vh;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+/*Comentários*/
+
+@media screen and (max-width: 866px) {
+
+  .mobile {
+    position: absolute;
+    top: 10vh;
+    left: 0;
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    backdrop-filter: blur(2px);
+    padding: 2% 0;
+    z-index: 997;
+    order: 1px solid gray;
+    background-color: rgba(
+      255,
+      255,
+      255,
+      0.74
+    ); /* Cor de fundo com transparência para o efeito de vidro */
+    backdrop-filter: blur(5px); /* Aplica o efeito de desfoque */
+    border-radius: 8px;
+    -webkit-box-shadow: 6px 6px 15px -6px rgba(0, 0, 0, 0.71);
+    box-shadow: 6px 6px 15px -6px rgba(0, 0, 0, 0.71);
+    display: none;
+  }
+  .mobile button,
+  .mobile p,
+  .mobile input {
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+  }
+
+  .mobile a:hover,
+  .mobile p:hover,
+  .mobile div:hover,
+  .mobile form:hover,
+  .mobile button:hover {
+    background-color: #cf1414;
+  }
+  .alterarbtn-mobile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .menubtn {
+    display: block;
+    margin-left: 20px;
+  }
+  .menu-right,
+  .navegacao-a {
+    display: none;
+  }
+  .infos-filmeseseries {
+    padding: 0 2%;
+    padding-top: 11vh;
+    flex-direction: column;
+    align-items: center;
+  }
+  .detalhe-capa {
+    display: flex;
+    padding: 2% 0;
+    justify-content: center;
+    width: 30%;
+    height: 50%;
+  }
+  .detalhe-infos {
+    padding: 2%;
+    width: 100%;
+  }
+}
+@media screen and (max-width: 416px) {
+.todosfilmes-container-box, .todosfilmes-container-box-maisavaliados{
+  justify-content: center;
+  }
+  header .pesquisar-box .pesquisar-btn {
+    width: 90%;
+  }
+  .filmes-box-container {
+    justify-content: center;
+  }
+  .todosfilmes-container-titulo{
+    flex-direction: column;
+  }
+  .todosfilmes-container-selecionar{
+    margin-top: 10px;
+  }
+  .filmes-box {
+    margin: 0;
+    margin-top: 2%;
+    width: 80vw;
+    height: 65vh;
+  }
+  
+
+   
+}

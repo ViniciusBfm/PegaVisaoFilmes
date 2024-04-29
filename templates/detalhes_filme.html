@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pega Visão</title>
+    <link href="../static/css/home.css" rel="stylesheet" />
+    <link rel="shortcut icon" type="image-x/png" href="../static/image/icon.ico">
+</head>
+<body>
+    {% extends 'base.html' %}
+
+    {% block title %}Pega Visão{% endblock %}
+
+    {% block content %}
+    <section class="infos-filmeseseries">
+        <div class="detalhe-capa">
+            <img src="data:image/jpeg;base64,{{ filme_serie[7] }}" alt="Capa do Filme">
+        </div>  
+        <div class="detalhe-infos">
+            <div class="detalhes-info-titulo">
+                <h1>{{ filme_serie[2] }}</h1>
+                <div class="detalhe-infos-voltar">
+                    <a style=" color: white; " href="{{ url_for('home') }}">Voltar <img style="margin-left: 10px;" src="../static/image/voltar.png" alt=""></a>
+                </div>
+            </div>         
+            <div class="detalhe-infos-txt-p">
+                <p><span style="font-weight: bold; margin-right: 10px;"> Ano de lançamento:</span> {{ filme_serie[3] }}</p> <!-- Ano do Filme -->
+                <p style="margin: 10px 0;"><span style="font-weight: bold; margin-right: 10px;">Visualização:</span>{{ filme_serie[4] }}</p> <!-- Dia Assistido -->
+                <div style="margin-bottom: 10px;" class="detalhe-infos-notas">
+                    {% if str_to_float(filme_serie[5]) < 5.5 %}
+                    <div class="detalhe-infos-notas-boa-baixa">
+                        <span style="font-weight: bold; margin-right: 10px;">Nota:</span>
+                        <img style="margin: 0 10px;" src="../static/image/notabaixa.png" alt="Avaliação Baixa">
+                        <span>{{ filme_serie[5] }}</span>
+                    </div>
+                    {% else %}
+                    <div class="detalhe-infos-notas-boa-baixa">
+                        <span style="font-weight: bold; margin-right: 10px;">Nota:</span>
+                        <img style="margin: 0 10px;" src="../static/image/notaboa.png" alt="Avaliação Alta">
+                        <h1>{{ filme_serie[5] }}</h1>
+                    </div>
+                    {% endif %}
+                </div>
+                <div style="margin-bottom: 20px;" class="detalhe-infos-avaliacao">
+                    <p><span style="font-weight: bold; margin-right: 10px;">Avaliação: </span>{{ filme_serie[6] }}</p>
+                </div>   
+                {% if user_function == 'admin' %}
+                <div class="detalhe-infos-excluir">
+                    <form action="{{ url_for('remover_filme', filme_id=filme_serie[0]) }}" method="post">
+                        <button type="submit" >Excluir {{ filme_serie[1] }} <img style="margin-left: 10px;" src="../static/image/remover.png" alt="remover"></button>
+                    </form>
+                </div>
+                {% endif %}
+            </div>  
+        </div>
+        
+
+
+
+    </section>
+
+    <section class="comentarios-container">
+        <div class="comentarios-container-titulo">
+            <h1>Comentários</h1>
+        </div>        
+        <div class="comentarios-section">
+            {% if user_logged_in %}
+            <div class="comentarios-box-comentar">
+                <div class="comentarios-box-comentar-nome">
+                    <p>{{ user_name[0] }}</p>
+                </div>               
+                <form action="{{ url_for('adicionar_comentario', filme_id=filme_serie[0]) }}" method="post">
+                    <textarea placeholder="Insira seu comentário" class="comentarios-textarea" name="comentario"></textarea><br>
+                    <input type="submit" value="Comentar">
+                </form> 
+            </div>                    
+            {% else %}
+            <p>Faça <span style="font-weight: bold;">login</span> para adicionar um comentário.</p>
+            {% endif %}
+            {% if comentarios %}
+            <ul class="comentarios-list">
+                {% for comentario in comentarios %}
+                <li>{{ comentario['comentario'] }}</li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <h1 class="comentarios-h1">Comentarios feitos</h1>
+            <p>Nenhum comentário disponível.</p>
+            {% endif %}
+            
+        </div>
+        <div class="comentarios-feitos-container">
+            <div style="margin-top: 30px;" class="comentarios-feitos-box">
+                <ul>
+                    {% for comentario_item in comentarios %}
+                    <div style="border: 1px solid #cf141444; margin-bottom: 20px; padding: 10px 2%; border-radius: 8px;">
+                        
+                        <h2>{{ comentario_item[3] }} <img style="margin-left: 10px;" src="../static/image/verificar.png" alt=""></h2>
+                        <div class="comentarios-letra-excluir">
+                            <li>{{ comentario_item[4] }}</li>
+                            {% if user_logged_in and (user_function == 'admin' or comentario_item[2] == user_id) %}
+                                <form action="{{ url_for('remover_comentario', comentario_id=comentario_item[0]) }}" method="post">
+                                    <input type="hidden" name="filme_id" value="{{ filme_serie[0] }}">
+                                    <button type="submit"><img src="../static/image/remover-comentario.png" alt=""></button>
+                                </form>
+                            {% endif %}
+                        </div>
+                        
+                    </div>
+                    {% endfor %}
+                </ul>
+            </div>
+                                             
+        </div>    
+    </section>
+    {% endblock %}
+  
+</body>
+<script src="../static/js/paginainicial.js"></script>
+</html>

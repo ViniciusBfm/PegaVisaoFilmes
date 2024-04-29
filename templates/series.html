@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../static/css/home.css" rel="stylesheet" />
+    <link rel="shortcut icon" type="image-x/png" href="../static/image/icon.ico">
+</head>
+<body>
+  {% extends 'base.html' %}
+
+  {% block title %}Pega Visão - Séries{% endblock %}
+
+  {% block content %}
+  <section class="todosfilmes-container">
+    <div style="padding-top: 12vh;" class="todosfilmes-container-titulo">
+        <h1>Todas as séries</h1>
+        <div class="todosfilmes-container-selecionar">
+          <h1>Classificar por:</h1>
+          <select id="select-classificacao" onchange="classificar()">
+              <option value="recentes">Mais Recentes</option>
+              <option value="avaliados">Melhor Avaliados</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="todosfilmes-container-box">
+          {% for filme_serie in filmes_series %}
+            {% if filme_serie[1] == 'Serie' %}
+            <div class="filmes-box">
+                <div class="filmes-img">
+                    <img src="data:image/jpeg;base64,{{ filme_serie[7] }}" alt="Capa do Filme">
+                </div>
+                <div class="filmes-txt">{{ filme_serie[2] }}</div>
+                <div class="filmes-data">{{ filme_serie[3] }}</div>
+                <div class="filmes-infos">  
+                  <div class="files-txt-titulo">{{ filme_serie[2] }}</div>  
+                  <div class="filmes-diaassistido">Visualização: {{ filme_serie[4] }}</div>               
+                    <div class="filmes-nota">
+                        {% if str_to_float(filme_serie[5]) < 5.5 %}
+                        <div>
+                          <p>Nota:</p>
+                          <img src="../static/image/notabaixa.png" alt="Avaliação Baixa">
+                          <span>{{ filme_serie[5] }}</span>
+                        </div>                      
+                        {% else %}
+                        <div>
+                          <p>Nota:</p>
+                          <img src="../static/image/notaboa.png" alt="Avaliação Alta">
+                          <span>{{ filme_serie[5] }}</span>
+                        </div>                     
+                        {% endif %}                   
+                    </div>
+                  <div class="filmes-opniao">Avaliação: {{ filme_serie[6] }}</div>
+                  <div class="filmes-ver">
+                    <a href="{{ url_for('detalhes', filme_id=filme_serie[0]) }}">Ver mais</a>
+                  </div> 
+                  {% if user_function == 'admin' %}
+                  <div class="filmes-excluir">
+                    <form action="{{ url_for('remover_filme', filme_id=filme_serie[0]) }}" method="post">
+                        <button type="submit" >Excluir {{ filme_serie[1] }} <img src="../static/image/remover.png" alt="remover"></button>
+                    </form>
+                  </div>
+                  {% endif %}               
+                </div>         
+            </div>
+            {% endif %}
+            {% endfor %}
+      </div>
+
+      <div class="todosfilmes-container-box-maisavaliados">
+        {% for filme_serie in filmes_mais_avaliados %}
+            {% if filme_serie[1] == 'Serie' %}
+                <div class="filmes-box">
+                    <div class="filmes-img">
+                        <img src="data:image/jpeg;base64,{{ filme_serie[7] }}" alt="Capa do Filme">
+                    </div>
+                    <div class="filmes-txt">{{ filme_serie[2] }}</div>
+                    <div class="filmes-data">{{ filme_serie[3] }}</div>
+                    <div class="filmes-infos">  
+                        <div class="files-txt-titulo">{{ filme_serie[2] }}</div>  
+                        <div class="filmes-diaassistido">Visualização: {{ filme_serie[4] }}</div>               
+                        <div class="filmes-nota">
+                            {% if str_to_float(filme_serie[5]) < 5.5 %}
+                                <div>
+                                    <p>Nota:</p>
+                                    <img src="../static/image/notabaixa.png" alt="Avaliação Baixa">
+                                    <span>{{ filme_serie[5] }}</span>
+                                </div>                      
+                            {% else %}
+                                <div>
+                                    <p>Nota:</p>
+                                    <img src="../static/image/notaboa.png" alt="Avaliação Alta">
+                                    <span>{{ filme_serie[5] }}</span>
+                                </div>                     
+                            {% endif %}                   
+                        </div>
+                        <div class="filmes-opniao">Avaliação: {{ filme_serie[6] }}</div>
+                        <div class="filmes-ver">
+                            <a href="{{ url_for('detalhes', filme_id=filme_serie[0]) }}">Ver mais</a>
+                        </div> 
+                        {% if user_function == 'admin' %}
+                        <div class="filmes-excluir">
+                            <form action="{{ url_for('remover_filme', filme_id=filme_serie[0]) }}" method="post">
+                                <button type="submit" >Excluir {{ filme_serie[1] }} <img src="../static/image/remover.png" alt="remover"></button>
+                            </form>
+                        </div>
+                        {% endif %}               
+                    </div>         
+                </div>
+            {% endif %}
+        {% endfor %}
+      </div>
+      
+  </section>
+  {% endblock %}
+ 
+</body>
+<script src="../static/js/paginainicial.js"></script>
+</html>

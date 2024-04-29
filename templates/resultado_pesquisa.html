@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../static/css/home.css" rel="stylesheet" />
+    <link rel="shortcut icon" type="image-x/png" href="../static/image/icon.ico">
+</head>
+<body>
+    {% extends 'base.html' %}
+
+    {% block title %}Pega Visão{% endblock %}
+
+    {% block content %}
+    <section class="resultado-container">
+        <div style="display: flex;" class="resultado-container-txt">
+            <h1>Resultado da pesquisa: </h1>
+            <h1 style="font-weight: normal; margin-left: 10px; text-transform: capitalize;">{{ termo_pesquisa }}</h1>
+        </div>
+        <div style="margin-top: 20px;" class="todosfilmes-container-box">
+            
+            {% if resultados %}
+            {% for resultado in resultados %}
+            <div class="filmes-box">
+                <div class="filmes-img">
+                    <img src="data:image/jpeg;base64,{{ resultado[7] }}" alt="Capa do Filme">
+                </div>
+                <div class="filmes-txt">{{ resultado[2] }}</div>
+                <div class="filmes-data">{{ resultado[3] }}</div>
+                <div class="filmes-infos">
+                    <div class="files-txt-titulo">{{ resultado[2] }}</div>
+                    <div class="filmes-diaassistido">Visualização: {{ resultado[4] }}</div>
+                    <div class="filmes-nota">
+                        {% if str_to_float(resultado[5]) < 5.5 %}
+                        <div>
+                            <p>Nota:</p>
+                            <img src="../static/image/notabaixa.png" alt="Avaliação Baixa">
+                            <span>{{ resultado[5] }}</span>
+                        </div>
+                        {% else %}
+                        <div>
+                            <p>Nota:</p>
+                            <img src="../static/image/notaboa.png" alt="Avaliação Alta">
+                            <span>{{ resultado[5] }}</span>
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="filmes-opniao">Avaliação: {{ resultado[6] }}</div>
+                    <div class="filmes-ver">
+                        <a href="{{ url_for('detalhes', filme_id=resultado[0]) }}">Ver mais</a>
+                      </div> 
+                    {% if user_function == 'admin' %}
+                    <div class="filmes-excluir">
+                        <form action="{{ url_for('remover_filme', filme_id=resultado[0]) }}" method="post">
+                            <button type="submit">Excluir {{ resultado['tipo'] }} <img src="../static/image/remover.png" alt="remover"></button>
+                        </form>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <p>Nenhum resultado encontrado.</p>
+            {% endif %}
+        </div>
+    </section>
+    {% endblock %}
+
+
+    
+</body>
+</html>

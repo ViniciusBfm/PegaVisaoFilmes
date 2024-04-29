@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Pega Visão{% endblock %}</title>
+    <link rel="shortcut icon" type="image-x/png" href="../static/image/icon.ico">
+    <!-- Adicione aqui os seus estilos CSS -->
+</head>
+<body>
+    <header>
+        <nav class="navegacao">
+            <div class="navegacao-logo">
+            <a href="{{ url_for('home') }}"><img src="../static/image/logo3.png" alt=""></a>
+            </div>
+            <div class="navegacao-a">
+              <a href="{{ url_for('filmes') }}"" style="margin: 0 30px"><button>Filmes</button></a>
+              <a href="{{ url_for('series') }}"><button>Series</button></a>
+            </div>
+        </nav>
+        <div class="header-button">       
+            <img
+            class="pequisar"
+            style="cursor: pointer"
+            src="../static/image/pesquisa.png"
+            alt="pesquisar"
+            />
+            <img class="menubtn" style="cursor: pointer;" src="../static/image/menu.png" alt="menu">
+            <div class="menu-right">
+              {% if user_logged_in %}          
+              <p style="margin: 0 20px; text-transform: capitalize; color: #f8d440;">Olá, {{ user_name }}!</p>
+              
+              <form action="{{ url_for('logout') }}" method="post">
+                <input class="btnsair" type="submit" value="Sair" />
+              </form>
+              {% else %}
+              <button class="loginbtn" style="margin: 0 20px">Login</button>
+              <a href="{{ url_for('cadastro') }}"><button>Cadastrar</button></a>
+              {% endif %} 
+            </div>
+                    
+        </div>
+        <nav class="mobile">
+          <p style="padding: 6px 0; text-transform: capitalize; width: 100%; text-align: center;">Olá, {{ user_name }}!</p>
+          <a style="padding: 6px 0; width: 100%; text-align: center;" href="{{ url_for('filmes') }}"><button>Filmes</button></a>
+          <a style="padding: 6px 0; width: 100%; text-align: center; " href="{{ url_for('series') }}"><button>Series</button></a>
+          {% if user_logged_in %}                  
+          <form style="padding: 6px 0; width: 100%; text-align: center;" action="{{ url_for('logout') }}" method="post">
+            <input style="width: 100%;" class="btnsair" type="submit" value="Sair" />
+          </form>
+          {% else %}
+          <button style="padding: 6px 0; width: 100%; text-align: center;" class="loginbtn-mobile">Login</button>
+          <a style="padding: 6px 0; width: 100%; text-align: center; " href="{{ url_for('cadastro') }}"><button>Cadastrar</button></a>
+          {% endif %}         
+        </nav>
+        <div class="pesquisar-box">
+            <form action="{{ url_for('pesquisar') }}" method="get">
+              <input class="pesquisar-btn" type="search" placeholder="Pesquisar..." name="termo_pesquisa" />
+              <button style="margin-left: 15px;" class="enviar-btn" type="submit"><img src="../static/image/pesquisa.png" alt=""></button>
+            </form>      
+            <img
+            style="cursor: pointer"
+            class="close"
+            src="../static/image/close.png"
+            alt="fechar"
+            />
+        </div>
+    </header> 
+
+    <div class="login">
+        <div class="login-container">
+          <h1>Login</h1>
+          <form action="/autenticar" method="post">
+            <label style="margin-bottom: 5px;" for="nome">E-mail:</label>
+            <input type="email" name="email" placeholder="Email" required><br/>
+            <label style="margin-bottom: 5px;" for="senha">Senha:</label>
+            <input
+              placeholder="Senha"
+              type="password"
+              id="senha"
+              name="senha"
+              required
+            /><br />
+            <button type="submit">Entrar</button>
+          </form>
+          {% if message %}
+          <div class="mensagem-erro"><p>{{ message }}</p></div>
+          {% endif %}
+  
+          <div>
+            <span>Não tem uma Conta?</span>
+            <a style="color: white" href="{{ url_for('cadastro') }}">Cadastre-se</a>
+          </div>
+          <a href="/esqueci_minha_senha">Esqueceu a senha?</a>
+  
+          {% with messages = get_flashed_messages(with_categories=true) %} {% if
+          messages %} {% for category, message in messages %}
+          <div style="font-size: 13px;" class="alert alert-{{ category }}">{{ message }}</div>
+          {% endfor %} {% endif %} {% endwith %}
+        </div>
+    </div>
+       
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+</body>
+<script src="../static/js/paginainicial.js"></script>
+</html>

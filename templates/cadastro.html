@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pega Visão - Cadastrar</title>
+    <link href="../static/css/home.css" rel="stylesheet" />
+    <link rel="shortcut icon" type="image-x/png" href="../static/image/icon.ico">
+</head>
+<body >
+    <section class="criarconta-container">
+        <div class="criarconta-container-box">
+            <div class="criarconta-logo"><img src="../static/image/logo3.png" alt=""></div>
+            <div class="criarconta">
+                <h1  style="margin-bottom: 20px; color: black;">Criar conta</h1>
+                <form action="{{ url_for('cadastro') }}" method="post">
+                    <div>
+                        <label for="nome">Nome:</label>
+                        <input placeholder="Digite seu nome" type="text" id="nome" name="nome" value="{{ nome }}" required>
+                    </div>
+                    <div>
+                        <label for="email">E-mail:</label>
+                    <input placeholder="Digite seu e-mail" type="email" id="email" name="email" value="{{ email }}" required>
+                    </div>
+                    <div>
+                        <label for="senha">Senha:</label>
+                        <div class="input-password">
+                            <input placeholder="Senha" type="password" id="senha" name="senha" required>
+                            <button id="mostrarSenha" class="ver-ocultar-senha" type="button"><img class="verocultar" src="../static/image/oculta-senha.png" alt="ver senha"> </button>
+                        </div>
+                        
+                    </div>
+                    <div>
+                        <label style="display: none;"  for="funcao">Função:</label>
+                        <select style="display: none;" id="funcao" name="funcao" required>
+                            <option value="{{ funcoes[0] }}">{{ funcoes[0] }}</option>
+                        </select>         
+                    </div>            
+                    <input style="cursor: pointer;" type="submit" value="Criar Conta">
+                    <div class="mensagem">
+                        {% with messages = get_flashed_messages(with_categories=true) %}
+                            {% if messages %}
+                                {% for category, message in messages %}
+                                    <div class="alert alert-{{ category }}">
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                            {% endif %}
+                        {% endwith %}
+                    </div> 
+                </form> 
+                <a style="margin-top: 10px; text-align: center; font-size: 14px;" href="{{ url_for('home') }}">Já tem conta? Conecte-se!</a>
+                    
+                
+            </div>
+        </div>
+        
+    </section>
+    <script>
+        document.getElementById("mostrarSenha").addEventListener("click", function() {
+            var senhaInput = document.getElementById("senha");
+            var imgVerOcultar = document.querySelector(".verocultar")
+            if (senhaInput.type === "password") {
+                senhaInput.type = "text";
+                imgVerOcultar.src = "../static/image/ver-senha.png"
+            } else {
+                senhaInput.type = "password";
+                imgVerOcultar.src = "../static/image/oculta-senha.png"
+            }
+        });
+    </script>
+    
+    
+</body>
+</html>
