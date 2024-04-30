@@ -50,8 +50,7 @@
             <input style="width: 100%;" class="btnsair" type="submit" value="Sair" />
           </form>
           {% else %}
-          <a href="{{ url_for('login') }}">Fazer Login</a>
-          <button style="padding: 6px 0; width: 100%; text-align: center;" class="loginbtn-mobile">Login</button>
+          <a style="color: black; padding: 6px 0; width: 100%; text-align: center; " href="{{ url_for('login') }}">Fazer Login</a>
           <a style="padding: 6px 0; width: 100%; text-align: center; " href="{{ url_for('cadastro') }}"><button>Cadastrar</button></a>
           {% endif %}         
         </nav>

@@ -289,7 +289,7 @@ def autenticar():
             return redirect(url_for('home'))
         else:
             message = 'Email ou senha incorretos. Tente novamente.'
-            return redirect(url_for('home', message=message))
+            return redirect(url_for('login', message=message))
 
     return render_template('pagina_inicial.html', message=message)
 
@@ -320,7 +320,7 @@ def esqueci_minha_senha():
 
             mensagem = "Uma nova senha foi enviada para o seu email."
 
-            return redirect(url_for('home'))
+            return redirect(url_for('login'))
         else:
             mensagem = "Email não encontrado."
 
