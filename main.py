@@ -264,6 +264,11 @@ def cadastro():
     # Se houver um erro, devolva os valores dos campos de formulário
     return render_template('cadastro.html', funcoes=funcoes, nome=nome, email=email)
 
+@app.route("/login")
+def login():
+    return render_template('login.html')
+
+
 @app.route('/autenticar', methods=['POST'])
 def autenticar():
     message = ''
@@ -348,7 +353,7 @@ def redefinir_senha(token):
         atualizar_senha(usuario[4], nova_senha_hash)
 
         flash('Senha redefinida com sucesso. Você já pode fazer login com sua nova senha.')
-        return redirect(url_for('home'))
+        return redirect(url_for('login'))
 
     return render_template('redefinir_senha.html', token=token)
 

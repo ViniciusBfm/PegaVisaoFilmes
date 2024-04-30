@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pega Visão - Redefinir Senha</title>
+    <link href="../static/css/home.css" rel="stylesheet" />
+    <link rel="shortcut icon" type="image-x/png" href="../static/image/icon.ico">
+</head>
+<body>
+    <section class="login-master">
+        <div class="login">
+            <div class="login-container">
+            <div class="login-titulo">
+                <h1>Login</h1>
+                <a class="voltar-btn" href="{{ url_for('home') }}">Voltar <img src="../static/image/voltar2.png" alt=""></a>
+            </div>
+              
+              <form action="/autenticar" method="post">
+                <label style="margin-bottom: 5px;" for="nome">E-mail:</label>
+                <input type="email" name="email" placeholder="Email" required><br/>
+                <label style="margin-bottom: 5px;" for="senha">Senha:</label>
+                <input
+                  placeholder="Senha"
+                  type="password"
+                  id="senha"
+                  name="senha"
+                  required
+                /><br />
+                
+                <button type="submit">Entrar</button>
+              </form>
+              {% if message %}
+              <div class="mensagem-erro"><p>{{ message }}</p></div>
+              {% endif %}
+      
+              <div>
+                <span>Não tem uma Conta?</span>
+                <a style="color: white" href="{{ url_for('cadastro') }}">Cadastre-se</a>
+              </div>
+              <a href="/esqueci_minha_senha">Esqueceu a senha?</a>
+              {% with messages = get_flashed_messages(with_categories=true) %} {% if
+              messages %} {% for category, message in messages %}
+              <div style="font-size: 13px;" class="alert alert-{{ category }}">{{ message }}</div>
+              {% endfor %} {% endif %} {% endwith %}
+            </div>
+        </div>
+    </section>    
+</body>
+</html>

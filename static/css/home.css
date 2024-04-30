@@ -94,6 +94,7 @@ header .pesquisar-box .enviar-btn {
 .mensagem {
   font-size: 13px;
   text-align: center;
+  margin-bottom: 10px;
 }
 .input-password{
   position: relative;
@@ -382,7 +383,7 @@ h1 {
 /*login*/
 .login,
 .alterar-senha {
-  width: 80%;
+  width: 90%;
   height: auto;
   max-width: 400px;
   position: fixed;
@@ -390,17 +391,57 @@ h1 {
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 2%;
-  background-image: url(../image/login.webp);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  border: 1px solid #cf1414;
+  border: 1px solid #cf1414ad;
   border-radius: 8px;
   -webkit-box-shadow: 6px 6px 15px -6px rgba(0, 0, 0, 0.71);
   box-shadow: 6px 6px 15px -6px rgba(0, 0, 0, 0.71);
   color: white;
-  display: none;
+  display: flex;
   z-index: 999;
+  backdrop-filter: blur(5px);
+  background-color: #1a191f85;
+}
+.login-titulo{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.voltar-btn{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #cf1414;
+  padding: 5px 10px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: linear 200ms;
+  color: white;
+  font-size: 14px;
+}
+.voltar-btn:hover{
+  background-color: #a01111;
+}
+.infos{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  justify-content: center;
+  font-size: 14px;
+}
+.login-master{
+  width: 100%;
+  height: 100%;
+  background-image: url(../image/login3.webp);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 .login-container {
   padding: 2% 0;
@@ -412,13 +453,18 @@ h1 {
 }
 .login-container h1 {
   font-size: 24px;
-  margin-bottom: 15px;
   font-family: "Signika Negative", sans-serif;
 }
 .login-container form {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+}
+header a{
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 15px;
 }
 .login input,
 .login button {
@@ -440,6 +486,7 @@ h1 {
 .login button:hover {
   background-color: #cf14147c;
 }
+
 .login-container div {
   text-align: center;
   color: white;
@@ -664,7 +711,7 @@ h1 {
   width: 90%;
   max-width: 550px;
   height: auto;
-  background-image: url(../image/adicionar.svg);
+  background-image: url(../image/login.webp);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -720,6 +767,10 @@ textarea {
   color: white;
   font-weight: bold;
   cursor: pointer;
+  transition: linear 200ms;
+}
+.adicionarfilmeseries input[type="submit"]:hover{
+  background-color: #a01111;
 }
 textarea {
   resize: none;

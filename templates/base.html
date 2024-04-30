@@ -35,8 +35,8 @@
                 <input class="btnsair" type="submit" value="Sair" />
               </form>
               {% else %}
-              <button class="loginbtn" style="margin: 0 20px">Login</button>
-              <a href="{{ url_for('cadastro') }}"><button>Cadastrar</button></a>
+              <a class="fazerlogin" style="margin: 0 20px" href="{{ url_for('login') }}">Login</a>
+              <a  class="cadastrarbtn" href="{{ url_for('cadastro') }}"><button>Cadastrar</button></a>
               {% endif %} 
             </div>
                     
@@ -50,6 +50,7 @@
             <input style="width: 100%;" class="btnsair" type="submit" value="Sair" />
           </form>
           {% else %}
+          <a href="{{ url_for('login') }}">Fazer Login</a>
           <button style="padding: 6px 0; width: 100%; text-align: center;" class="loginbtn-mobile">Login</button>
           <a style="padding: 6px 0; width: 100%; text-align: center; " href="{{ url_for('cadastro') }}"><button>Cadastrar</button></a>
           {% endif %}         
@@ -68,38 +69,7 @@
         </div>
     </header> 
 
-    <div class="login">
-        <div class="login-container">
-          <h1>Login</h1>
-          <form action="/autenticar" method="post">
-            <label style="margin-bottom: 5px;" for="nome">E-mail:</label>
-            <input type="email" name="email" placeholder="Email" required><br/>
-            <label style="margin-bottom: 5px;" for="senha">Senha:</label>
-            <input
-              placeholder="Senha"
-              type="password"
-              id="senha"
-              name="senha"
-              required
-            /><br />
-            <button type="submit">Entrar</button>
-          </form>
-          {% if message %}
-          <div class="mensagem-erro"><p>{{ message }}</p></div>
-          {% endif %}
-  
-          <div>
-            <span>Não tem uma Conta?</span>
-            <a style="color: white" href="{{ url_for('cadastro') }}">Cadastre-se</a>
-          </div>
-          <a href="/esqueci_minha_senha">Esqueceu a senha?</a>
-  
-          {% with messages = get_flashed_messages(with_categories=true) %} {% if
-          messages %} {% for category, message in messages %}
-          <div style="font-size: 13px;" class="alert alert-{{ category }}">{{ message }}</div>
-          {% endfor %} {% endif %} {% endwith %}
-        </div>
-    </div>
+    
        
     <main>
         {% block content %}{% endblock %}

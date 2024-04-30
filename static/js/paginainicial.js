@@ -15,32 +15,7 @@ closePesquisar.addEventListener("click", ()=>{
     headerLogo.style.display = "flex"
     pesquisarBox.style.display = "none"
 })
-//menu de login
-document.addEventListener('DOMContentLoaded', function () {
-    var loginbtn = document.querySelector(".loginbtn");
-    var menu = document.querySelector(".login");
 
-    loginbtn.addEventListener('click', function (event) {
-        // Evita que o evento de clique se propague para o documento inteiro
-        event.stopPropagation();
-
-        // Alternar a visibilidade do menu
-        if (menu.style.display === 'none' || menu.style.display === '') {
-            menu.style.display = 'block';
-        } else {
-            menu.style.display = 'none';
-        }
-    });
-
-    // Adiciona um ouvinte de evento de clique ao documento inteiro
-    document.addEventListener("click", (event) => {
-        // Verifica se o clique não ocorreu dentro do menu ou no botão do menu
-        if (!menu.contains(event.target) && event.target !== loginbtn) {
-            // Fecha o menu
-            menu.style.display = "none";
-        }
-    });
-});
 
 //Adicionar filmes ou séries
 document.addEventListener('DOMContentLoaded', function () {
@@ -109,33 +84,7 @@ function classificar() {
 }
 
 
-//mobile de login
-const loginbtnmobile = document.querySelector(".loginbtn-mobile")
-document.addEventListener('DOMContentLoaded', function () {
-    var menu3 = document.querySelector(".login");
 
-    loginbtnmobile.addEventListener('click', function (event) {
-        // Evita que o evento de clique se propague para o documento inteiro
-        event.stopPropagation();
-
-        // Alternar a visibilidade do menu
-        if (menu3.style.display === 'none' || menu3.style.display === '') {
-            mobilemanu.style.display = 'none'
-            menu3.style.display = 'block';
-        } else {
-            menu3.style.display = 'none';
-        }
-    });
-
-    // Adiciona um ouvinte de evento de clique ao documento inteiro
-    document.addEventListener("click", (event) => {
-        // Verifica se o clique não ocorreu dentro do menu ou no botão do menu
-        if (!menu3.contains(event.target) && event.target !== loginbtnmobile) {
-            // Fecha o menu
-            menu3.style.display = "none";
-        }
-    });
-});
 const menubtn = document.querySelector(".menubtn");
 const mobilebox = document.querySelector(".mobile");
 

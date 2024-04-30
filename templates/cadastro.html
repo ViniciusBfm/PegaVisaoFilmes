@@ -11,9 +11,12 @@
 <body >
     <section class="criarconta-container">
         <div class="criarconta-container-box">
-            <div class="criarconta-logo"><img src="../static/image/logo3.png" alt=""></div>
+            <div class="criarconta-logo"><a href="{{ url_for('home') }}"><img src="../static/image/logo3.png" alt=""></a></div>
             <div class="criarconta">
-                <h1  style="margin-bottom: 20px; color: black;">Criar conta</h1>
+                <div class="login-titulo">
+                    <h1 style=" color: black;">Criar conta</h1>
+                    <a class="voltar-btn" href="{{ url_for('home') }}">Voltar <img src="../static/image/voltar2.png" alt=""></a>
+                </div>
                 <form action="{{ url_for('cadastro') }}" method="post">
                     <div>
                         <label for="nome">Nome:</label>
@@ -38,6 +41,7 @@
                         </select>         
                     </div>            
                     <input style="cursor: pointer;" type="submit" value="Criar Conta">
+
                     <div class="mensagem">
                         {% with messages = get_flashed_messages(with_categories=true) %}
                             {% if messages %}
@@ -49,10 +53,17 @@
                             {% endif %}
                         {% endwith %}
                     </div> 
-                </form> 
-                <a style="margin-top: 10px; text-align: center; font-size: 14px;" href="{{ url_for('home') }}">Já tem conta? Conecte-se!</a>
-                    
-                
+                </form>
+                <div class="infos">
+                    <div>
+                        <span style="color:black" >Não tem uma Conta?</span>
+                        <a style="color: black" href="{{ url_for('cadastro') }}">Cadastre-se</a>
+                    </div>
+                    <div>  
+                        <span>Já tem conta? </span> 
+                        <a style="color: black" href="{{ url_for('login') }}">Faça Login</a>
+                    </div>
+                </div>    
             </div>
         </div>
         
