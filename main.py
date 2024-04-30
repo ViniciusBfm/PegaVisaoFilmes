@@ -315,7 +315,7 @@ def esqueci_minha_senha():
 
             mensagem = "Uma nova senha foi enviada para o seu email."
 
-            return render_template("pagina_inicial.html")
+            return redirect(url_for('home'))
         else:
             mensagem = "Email não encontrado."
 
