@@ -176,8 +176,7 @@ header .pesquisar-box input::placeholder {
   margin-left: 10px;
 }
 .filmes-container {
-  padding-left: 2%;
-  padding-right: 2%;
+  padding: 0 2%;
   width: 100%;
   height: auto;
   background-color: #1a191f;
@@ -221,9 +220,9 @@ h1 {
   max-width: 1366px;
   margin: 0 auto;
   height: auto;
+  gap: 20px;
 }
 .filmes-box {
-  margin: 1%;
   width: 190px;
   height: 280px;
   position: relative;
