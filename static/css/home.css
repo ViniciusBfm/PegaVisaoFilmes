@@ -948,10 +948,12 @@ textarea {
 .todosfilmes-container-box,
 .todosfilmes-container-box-maisavaliados {
   width: 100%;
+  margin-top: 20px;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   color: white;
+  gap: 20px;
 }
 .todosfilmes-container-box-maisavaliados {
   display: none;
